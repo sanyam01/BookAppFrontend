@@ -1,0 +1,52 @@
+.topBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 56px;
+    border-bottom: 1px solid #C6C8CE;
+    padding: 0px 36px 0px 36px;
+    align-items: center;
+
+    .imgContent {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        align-items: center;
+
+        img {
+            height: 34px;
+            width: 54px;
+            border-radius: 4px;
+
+
+            .content {
+                font-family: 'Inter', sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                color: black;
+                line-height: 17px;
+
+            }
+        }
+    }
+
+
+}
+
+.offcanvas {
+    width: 600px;
+    padding: 36px;
+
+    .offcanvas-header {
+        padding: unset;
+        margin-bottom: 36px; 
+    }
+
+    Button {
+        margin-top: 36px;
+    }
+
+    .form-control{
+        margin-bottom: 16px;
+    }
+}
