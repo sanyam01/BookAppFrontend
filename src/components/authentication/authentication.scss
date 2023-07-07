@@ -1,0 +1,32 @@
+.loginText {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    color: blue;
+
+    &:hover{
+        text-decoration: underline;
+        color:blueviolet;
+        cursor: pointer;
+    }
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 36px;
+    width: 400px;
+    gap:20px;
+
+    .form-control-login{
+        margin-bottom: 16px;
+    }
+
+    .loginFormButtons{
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 16px;
+    }
+}

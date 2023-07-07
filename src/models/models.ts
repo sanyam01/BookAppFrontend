@@ -55,3 +55,19 @@ export const initBook = () => {
         categoryID: ""
     })
 }
+
+export interface SignupData {
+    username: string;
+    password: string;
+    confirmPassword: string;
+}
+
+export const initSignup = () => {
+    return({
+        username:"",
+        password:"",
+        confirmPassword:""
+    });
+   
+
+}

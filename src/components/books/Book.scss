@@ -4,7 +4,7 @@
     justify-content: space-between;
     width: 350px;
     height: 200px;
-    align-items: center;
+    // align-items: center;
     text-align: center;
     border: 1px solid #C6C8CE;
     border-radius: 8px;
@@ -37,4 +37,20 @@
     height: calc(100vh - 57px);
     width: 100%;
     padding: 36px;
+}
+
+.deleteButton{
+    display: flex;
+    flex-direction: row;
+    height: 36px;
+    width: 36px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    margin-right: 8px;
+
+    &:hover{
+        background-color: #C6C8CE;
+        border-radius: 8px;
+    }
 }

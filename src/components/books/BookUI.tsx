@@ -17,7 +17,9 @@ const BookUI = (props: IProps) => {
                 <div>{props.book.description}</div>
                 <div>{props.book.price}</div>
             </div>
-            <FontAwesomeIcon icon={faTrashCan} onClick={() => props.onDelete(props.book)} />
+            <div className="deleteButton">
+                <FontAwesomeIcon icon={faTrashCan} onClick={() => props.onDelete(props.book)} />
+            </div>
         </div>
 
     );
