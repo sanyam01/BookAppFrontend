@@ -31,12 +31,13 @@
 
 .books {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 8px;
     margin: 0 auto;
-    height: calc(100vh - 57px);
+    // height: calc(100vh - 57px);
     width: 100%;
     padding: 36px;
+    flex-wrap: wrap;
 }
 
 .deleteButton{

@@ -1,0 +1,22 @@
+.addCartDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    border: 1px solid black;
+    border-radius: 99px;
+    padding: 8px;
+    background-color: #52B640;
+    border-color: #52B640;
+
+    .addCartIcon {
+        height: 20px;
+        width: 16px;
+        color: whitesmoke;
+    }
+
+    .cartItems {
+        font-weight: 400;
+        font-size: 14px;
+        color: whitesmoke;
+    }
+}

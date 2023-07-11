@@ -8,6 +8,7 @@ export interface Book {
     description: string;
     price: string;
     categoryID: string;
+    userID: string;
 }
 
 export interface Books {
@@ -52,7 +53,8 @@ export const initBook = () => {
         image: "",
         description: "",
         price: "",
-        categoryID: ""
+        categoryID: "",
+        userID: ""
     })
 }
 
@@ -60,14 +62,18 @@ export interface SignupData {
     username: string;
     password: string;
     confirmPassword: string;
+    userID: string;
 }
 
 export const initSignup = () => {
-    return({
-        username:"",
-        password:"",
-        confirmPassword:""
+    return ({
+        username: "",
+        password: "",
+        confirmPassword: "",
+        userID: uuidv4()
     });
-   
+
 
 }
+
+export type PageType = "Manage" | "Books";

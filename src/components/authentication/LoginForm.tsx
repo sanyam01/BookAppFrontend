@@ -5,15 +5,17 @@ import { Button } from 'react-bootstrap';
 import { useState, ChangeEvent } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../store/store';
+import { bookSliceActions } from '../../store/bookSlice';
 
 interface IProps {
-    token: string;
-    setToken: Function;
+
 }
 
 const LoginForm = (props: IProps) => {
 
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
     const [user, setUser] = useState(initSignup());
 
@@ -24,15 +26,20 @@ const LoginForm = (props: IProps) => {
     const onSubmit = () => {
         const logUser = { username: user.username, password: user.password };
         axios.post('http://localhost:4000/login', logUser).then((res) => {
-            props.setToken(res.data.token);
+            dispatch(bookSliceActions.setToken(res.data.token));
             localStorage.setItem(
                 'userData',
                 JSON.stringify({
-                  token: res.data.token,
-                  expiration: 3600
+                    token: res.data.token,
+                    expiration: 3600,
+                    username: logUser.username,
+                    userID: res.data.userID
                 })
-              );
+            );
+            dispatch(bookSliceActions.setName(logUser.username));
+            dispatch(bookSliceActions.setID(res.data.userID));
             console.warn("success");
+            console.warn("id", res.data.userID);
             navigate('/');
         }).catch(() => {
             console.warn("fail");

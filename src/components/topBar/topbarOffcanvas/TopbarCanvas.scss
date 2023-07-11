@@ -1,0 +1,35 @@
+.barcanvas1 {
+    width: 350px !important;
+}
+
+.topBarCanvasBody {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+
+
+    .canvasBodyHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .userName {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .iconUserDiv {
+            height: 24px;
+            width: 24px;
+            color: green;
+        }
+    }
+}
+
+.dividerDiv{
+    border-bottom: 1px solid #C6C8CE;
+}

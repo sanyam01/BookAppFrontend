@@ -4,13 +4,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Main from './main';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import bookStore from './store/store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Main />
+    <Provider store={bookStore}>
+      <Main />
+    </Provider>
   </React.StrictMode>
 );
 

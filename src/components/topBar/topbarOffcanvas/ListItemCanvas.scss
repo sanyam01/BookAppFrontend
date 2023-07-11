@@ -1,0 +1,25 @@
+.listItemCanvas {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    gap: 24px;
+    width: 100%;
+
+    &:hover {
+        background-color: #E8E6EE;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .itemIcon {
+        height: 20px;
+        width: 16px;
+
+    }
+
+    .itemContent {
+        font-weight: 500;
+        font-size: 14px;
+    }
+
+}

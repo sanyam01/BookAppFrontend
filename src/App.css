@@ -46,7 +46,7 @@
 }
 
 .offcanvas.show {
-  width: 601px !important;
+  width: 601px ;
   overflow-y: auto;
 }
 

@@ -1,0 +1,13 @@
+.manageBooks {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 36px;
+
+    .manageBooksTitle {
+        font-size: 18px;
+        font-weight: 500;
+        color: black;
+        justify-content: left;
+        display: flex;
+    }
+}

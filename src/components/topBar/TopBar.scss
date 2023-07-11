@@ -7,6 +7,38 @@
     padding: 0px 36px 0px 36px;
     align-items: center;
 
+    .leftBar {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        align-items: center;
+
+        .barsIcon {
+
+            height: 30px;
+            width: 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            background-color: white;
+            border: none;
+            color: black;
+
+            &:hover {
+                background-color: #E8E6E3;
+                border-radius: 8px;
+            }
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+    }
+
+
     .imgContent {
         display: flex;
         flex-direction: row;
@@ -14,18 +46,17 @@
         align-items: center;
 
         img {
-            height: 34px;
-            width: 54px;
+            height: 22px;
+            width: 36px;
             border-radius: 4px;
 
         }
 
         .content {
             font-family: 'Inter', sans-serif;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 600;
             color: black;
-            line-height: 17px;
 
         }
     }
