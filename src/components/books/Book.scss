@@ -1,57 +1,69 @@
-.booksButton {
+.books {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     width: 350px;
     height: 200px;
-    // align-items: center;
-    text-align: center;
     border: 1px solid #C6C8CE;
     border-radius: 8px;
     background-color: #E6E8E6;
+    text-align: left;
+    background-image: url('../../../public/images/backgroundBook.jpg');
+    background-size: cover;
+    background-position: center;
+    
 
     &:hover {
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
 
-
-    .book {
+    .deleteButton {
         display: flex;
-        flex-direction: column;
-        gap: 16px;
+        flex-direction: row;
+        height: 36px;
+        width: 36px;
         align-items: center;
         justify-content: center;
-        flex-grow: 1;
+        
 
+        &:hover {
+            background-color: #C6C8CE;
+            border-radius: 8px;
+        }
+    }
+
+    .booksTopBar{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        // gap:8px;
+        height:56px;
+        align-items: center;
+        padding-right: 8px;
 
     }
+
+    .textDiv{
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+
+        .textContent{
+            font-weight: 500;
+            font-size: 16px;
+            color:darkblue
+        }
+    }
+
 
 }
 
 
-.books {
+.booksDiv {
     display: flex;
     flex-direction: row;
     gap: 8px;
     margin: 0 auto;
-    // height: calc(100vh - 57px);
     width: 100%;
     padding: 36px;
     flex-wrap: wrap;
-}
-
-.deleteButton{
-    display: flex;
-    flex-direction: row;
-    height: 36px;
-    width: 36px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 8px;
-    margin-right: 8px;
-
-    &:hover{
-        background-color: #C6C8CE;
-        border-radius: 8px;
-    }
 }

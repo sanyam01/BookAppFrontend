@@ -9,12 +9,16 @@ interface IProps {
 const AddCart = (props: IProps) => {
 
     const cart = useSelector((state: any) => state.cart);
-    console.warn("cart", cart);
+    let totalBooks = 0;
+    if (cart !== null)
+        for (const item of cart.books) {
+            totalBooks += item.quantity;
+        }
 
     return (
         <div className="addCartDiv">
             <FontAwesomeIcon icon={faBook} className="addCartIcon" />
-            <div className="cartItems">{cart ? cart.length : 0}</div>
+            <div className="cartItems">{totalBooks}</div>
         </div>
     );
 }

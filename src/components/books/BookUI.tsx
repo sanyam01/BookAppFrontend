@@ -3,7 +3,7 @@ import { Book } from '../../models/models';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import CommonTooltip from '../widgets/CommonTooltip';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faEdit } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../store/store';
@@ -15,6 +15,7 @@ interface IProps {
     token: string;
     onAdd?: Function;
     showDelete: boolean;
+    onEdit?: Function;
 }
 
 const BookUI = (props: IProps) => {
@@ -39,22 +40,32 @@ const BookUI = (props: IProps) => {
     }
 
     return (
-        <div className="booksButton">
-            <div className="book">
-                <div>{props.book.name}</div>
-                <div>{props.book.description}</div>
-                <div>{props.book.price}</div>
+
+        <div className="books">
+            <div className="booksTopBar">
+                {props.showDelete && <div className="deleteButton" onClick={() => props.onEdit && props.onEdit()}>
+                    <FontAwesomeIcon icon={faEdit} />
+                </div>}
+                {props.showDelete && <div className="deleteButton" onClick={() => onDelete(props.book)}>
+                    <FontAwesomeIcon icon={faTrashCan} />
+                </div>}
+
+                {props.onAdd &&
+                    <CommonTooltip title="Add to Cart">
+                        <div className="deleteButton" onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }}>
+                            <FontAwesomeIcon icon={faPlus} onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }} />
+                        </div>
+                    </CommonTooltip>}
             </div>
-            {props.showDelete && <div className="deleteButton">
-                <FontAwesomeIcon icon={faTrashCan} onClick={() => onDelete(props.book)} />
-            </div>}
-            {props.onAdd &&
-                <CommonTooltip title="Add to Cart">
-                    <div className="deleteButton" onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }}>
-                        <FontAwesomeIcon icon={faPlus} onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }} />
-                    </div>
-                </CommonTooltip>}
+            <div className="textDiv">
+                <div className='textContent'>{`Name : ${props.book.name}`}</div>
+                <div className='textContent'>{`Description : ${props.book.description}`}</div>
+                <div className='textContent'>{`Price : $${props.book.price}`}</div>
+            </div>
+
+
         </div>
+
 
     );
 

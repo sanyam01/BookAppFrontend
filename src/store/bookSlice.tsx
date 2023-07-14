@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Book, PageType } from '../models/models';
+import { Book, PageType, Cart } from '../models/models';
 
 const initialState: {
     name: string,
     token: string,
-    cart: Array<Book> | null,
+    cart: Cart | null,
     page: PageType,
     userID: string,
-    books: Book[] | null
+    books: Book[] | null,
+    formState: "Add" | "Edit"
 
 } = {
     name: "",
@@ -15,7 +16,8 @@ const initialState: {
     cart: null,
     page: "Books",
     userID: "",
-    books: null
+    books: null,
+    formState: "Add"
 }
 
 export const bookSliceReducer = createSlice({
@@ -32,12 +34,8 @@ export const bookSliceReducer = createSlice({
 
         },
 
-        setCart: (state, action: PayloadAction<Book>) => {
-            if (state.cart) {
-                state.cart = [...state.cart, action.payload]
-            }
-            else
-                state.cart = [action.payload]
+        setCart: (state, action: PayloadAction<Cart>) => {
+            state.cart = action.payload;
 
         },
 
@@ -52,6 +50,15 @@ export const bookSliceReducer = createSlice({
 
         setBooks: (state, action: PayloadAction<Book[]>) => {
             state.books = action.payload;
+        },
+
+        setFormState: (state, action: PayloadAction<"Add" | "Edit">) => {
+            state.formState = action.payload;
+        },
+
+        editBook: (state, action: PayloadAction<Book>) => {
+            if (state.books !== null)
+                state.books = [...state.books.map((book) => book.id !== action.payload.id ? book : action.payload)];
         },
 
         resetStore: (state) => {

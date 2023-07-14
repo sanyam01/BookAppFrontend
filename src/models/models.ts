@@ -77,3 +77,8 @@ export const initSignup = () => {
 }
 
 export type PageType = "Manage" | "Books";
+
+export interface Cart {
+    books: Array<{ book: Book, quantity: number }>,
+    userID: string
+}

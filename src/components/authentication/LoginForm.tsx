@@ -39,7 +39,6 @@ const LoginForm = (props: IProps) => {
             dispatch(bookSliceActions.setName(logUser.username));
             dispatch(bookSliceActions.setID(res.data.userID));
             console.warn("success");
-            console.warn("id", res.data.userID);
             navigate('/');
         }).catch(() => {
             console.warn("fail");

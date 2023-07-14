@@ -5,6 +5,7 @@ import BookUI from './BookUI';
 interface IProps {
     books: Book[];
     onAdd: Function;
+    onEdit: Function;
 
 }
 
@@ -18,8 +19,8 @@ const Books = (props: IProps) => {
         return null;
     }
     return (
-        <div className='books'>
-            {displayBooks?.map((book) => <BookUI book={book} token={token} key={book.id} onAdd={props.onAdd} showDelete={false} />)}
+        <div className='booksDiv'>
+            {displayBooks?.map((book) => <BookUI book={book} token={token} key={book.id} onAdd={() => props.onAdd(book)} showDelete={false} onEdit={()=> props.onEdit(book)}/>)}
         </div>
 
     );
