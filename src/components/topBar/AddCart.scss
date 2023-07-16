@@ -8,6 +8,13 @@
     background-color: #52B640;
     border-color: #52B640;
 
+    &:hover {
+        background-color: #188317;
+        border-radius: 99px;
+        cursor: pointer;
+        border-color: #188317;
+    }
+
     .addCartIcon {
         height: 20px;
         width: 16px;
@@ -18,5 +25,108 @@
         font-weight: 400;
         font-size: 14px;
         color: whitesmoke;
+    }
+}
+
+.cartForm {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+
+    .cartFormHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 56px;
+        border-bottom: 1px solid #c6c8ce;
+
+        .cartFormHead {
+            display: flex;
+            flex-direction: row;
+            font-weight: 600;
+            font-size: 16px;
+            gap: 16px;
+
+            .shoppingCartIcon {
+                color: green !important
+            }
+
+        }
+
+        .crossDiv {
+            display: flex;
+            align-items: center;
+            height: 36px;
+            width: 36px;
+            justify-content: center;
+
+            &:hover {
+                background-color: #C6C8CE;
+                border-radius: 8px;
+
+            }
+
+            .cross {
+                height: 20px;
+                width: 16px;
+            }
+        }
+    }
+
+    .displayBooksPage {
+
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 256px);
+        gap: 36px;
+        overflow-y: auto;
+
+        .yourBooks {
+            display: flex;
+            flex-direction: row;
+            font-weight: 500;
+            font-size: 14px;
+            gap: 16px;
+            justify-content: space-between;
+
+            .yourBooksName {
+                // color: green
+            }
+
+            .yourBooksPrice {}
+        }
+
+
+        .allItems {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+    }
+
+    .footerCart {
+        height: 56px;
+        display: flex;
+        flex-direction: row;
+        border-top: 1px solid #C6c8ce;
+        align-items:end;
+        justify-content: end;
+
+        .proceedButton {
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            background-color: #52B640;
+            border-radius: 8px;
+            height: 36px;
+            padding: 16px;
+            align-items: center;
+
+            &:hover {
+                background-color: #188317;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+        }
     }
 }
