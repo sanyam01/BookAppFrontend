@@ -1,7 +1,7 @@
 .manageBooks {
     display: flex;
     flex-direction: column;
-    padding: 16px 36px;
+
 
     .manageBooksTitle {
         font-size: 18px;
@@ -9,5 +9,7 @@
         color: black;
         justify-content: left;
         display: flex;
+        padding-top: 36px;
+        padding-left: 36px;
     }
 }

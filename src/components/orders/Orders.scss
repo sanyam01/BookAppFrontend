@@ -1,0 +1,56 @@
+.overallOrders {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    height: calc(100vh - 56px);
+    overflow: auto;
+    padding: 32px;
+
+
+    .orderHead {
+        display: flex;
+        flex-direction: row;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .allOrders {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+
+        .orderItem {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #c6c8ce;
+            width: 600px;
+            border-radius: 8px;
+
+            .eachBook {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .orderHeader {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 16px;
+
+                .headerName {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 8px;
+
+                    .name {
+                        font-weight: 500;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}

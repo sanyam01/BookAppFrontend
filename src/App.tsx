@@ -13,6 +13,7 @@ import { useAppDispatch } from './store/store'
 import { bookSliceActions } from './store/bookSlice';
 import { useSelector } from 'react-redux';
 import ManageBooks from './components/manageBooks/ManageBooks';
+import Orders from './components/orders/Orders';
 
 interface IProps {
 
@@ -60,7 +61,7 @@ function App(props: IProps) {
   const onAdd = (newBook: Book) => {
     let newCart: Cart | null = cart ? { ...cart } : null;
     if (!newCart)
-      newCart = { books: [{ book: newBook, quantity: 1 }], userID: userID }
+      newCart = { books: [{ book: newBook, quantity: 1 }], userID: userID, date: "" }
     else {
       let foundMatch = false;
       const updatedBooks = newCart.books.map((item) => {
@@ -147,11 +148,13 @@ function App(props: IProps) {
       <SignupForm show={signup} closeForm={closeSignup} signupData={signupData} onChange={onChangeSignup} onSubmit={onSubmitSignup} />
       <TopBar setShowBook={() => {
         setShowBook(true);
+        setBook(initBook());
         dispatch(bookSliceActions.setFormState("Add"));
       }
       } setSignUp={() => setSignup(true)} />
       {page === "Books" && <Books books={data} onAdd={onAdd} onEdit={onEdit} />}
       {page === "Manage" && <ManageBooks onEdit={onEdit} />}
+      {page === "Orders" && <Orders />}
     </div>
   );
 }

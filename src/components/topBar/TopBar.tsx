@@ -23,7 +23,7 @@ const TopBar = (props: IProps) => {
                 {token !== "" && <TopbarCanvas setShowBook={props.setShowBook} />}
                 <div className='imgContent'>
                     <img src='/images/book.jpg' alt="Books" />
-                    <div className="content">QuillTome</div>
+                    <div className="content">Quill Tome</div>
                 </div>
             </div>
             <div className="rightBar">

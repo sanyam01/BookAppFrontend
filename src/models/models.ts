@@ -25,16 +25,6 @@ export interface Users {
     users: User[]
 }
 
-export interface OrderBook {
-    bookID: string;
-    numBook: string;
-    price: string;
-}
-
-export interface Order {
-    orderID: string;
-    books: OrderBook[];
-}
 
 export interface Category {
     id: string;
@@ -72,13 +62,17 @@ export const initSignup = () => {
         confirmPassword: "",
         userID: uuidv4()
     });
-
-
 }
 
-export type PageType = "Manage" | "Books";
+export type PageType = "Manage" | "Books" | "Orders";
 
 export interface Cart {
     books: Array<{ book: Book, quantity: number }>,
-    userID: string
+    userID: string,
+    date: string
+}
+
+export interface Order {
+    userID: string;
+    books: Array<{ bookID: string, quantity: number, price: string }>;
 }

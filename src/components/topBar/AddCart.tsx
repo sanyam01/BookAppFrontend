@@ -5,9 +5,10 @@ import './AddCart.scss';
 import { Offcanvas } from "react-bootstrap";
 import { useState } from 'react';
 import CartItem from './CartItem';
-import { Book } from '../../models/models';
+import { Book, Cart } from '../../models/models';
 import { useAppDispatch } from '../../store/store';
 import { bookSliceActions } from '../../store/bookSlice';
+import axios from 'axios';
 interface IProps {
 
 }
@@ -22,8 +23,8 @@ const AddCart = (props: IProps) => {
 
     const dispatch = useAppDispatch();
 
-
-    const cart = useSelector((state: any) => state.cart);
+    const cart: Cart = useSelector((state: any) => state.cart);
+    const token = useSelector((state: any) => state.token);
     let totalBooks = 0;
     let totalPrice = 0;
     if (cart !== null)
@@ -53,6 +54,22 @@ const AddCart = (props: IProps) => {
         }
         dispatch(bookSliceActions.setCart(newCart));
 
+    }
+
+    const order = () => {
+
+        const newCart = { ...cart, date: new Date().toISOString() }
+
+        axios.post('http://localhost:4000/addOrder', newCart, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response => {
+            console.warn("response", response);
+            dispatch(bookSliceActions.setCart(null));
+        }).catch(error => {
+            console.warn("error");
+        })
 
     }
 
@@ -93,7 +110,7 @@ const AddCart = (props: IProps) => {
                         </div>
                     </div>
                     <div className="footerCart">
-                        <div className="proceedButton">
+                        <div className="proceedButton" onClick={() => order()}>
 
                             Proceed to checkout
 

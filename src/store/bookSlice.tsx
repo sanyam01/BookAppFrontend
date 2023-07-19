@@ -8,7 +8,8 @@ const initialState: {
     page: PageType,
     userID: string,
     books: Book[] | null,
-    formState: "Add" | "Edit"
+    formState: "Add" | "Edit",
+    orders: Cart[] | null
 
 } = {
     name: "",
@@ -17,7 +18,8 @@ const initialState: {
     page: "Books",
     userID: "",
     books: null,
-    formState: "Add"
+    formState: "Add",
+    orders: null
 }
 
 export const bookSliceReducer = createSlice({
@@ -34,7 +36,7 @@ export const bookSliceReducer = createSlice({
 
         },
 
-        setCart: (state, action: PayloadAction<Cart>) => {
+        setCart: (state, action: PayloadAction<Cart | null>) => {
             state.cart = action.payload;
 
         },
@@ -61,12 +63,17 @@ export const bookSliceReducer = createSlice({
                 state.books = [...state.books.map((book) => book.id !== action.payload.id ? book : action.payload)];
         },
 
+        setOrder: (state, action) => {
+            state.orders = action.payload;
+        },
+
         resetStore: (state) => {
             state.name = "";
             state.token = "";
             state.cart = null;
             state.page = "Books";
             state.userID = "";
+            state.orders = null;
         }
     }
 });
