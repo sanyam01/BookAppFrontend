@@ -1,7 +1,7 @@
 import './TopBar.scss';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faPlus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import TopbarCanvas from './topbarOffcanvas/TopbarCanvas';
 import { useSelector } from 'react-redux';
 import AddCart from './AddCart';
@@ -27,11 +27,12 @@ const TopBar = (props: IProps) => {
                 </div>
             </div>
             <div className="rightBar">
-                {token === "" && <Button onClick={() => props.setSignUp(true)}>
+                {token === "" && <Button onClick={() => props.setSignUp(true)} className="addButton">
+                <FontAwesomeIcon icon={faUserPlus} />
                     Sign Up
                 </Button>}
                 {token !== "" && page === "Books" && <AddCart />}
-                {token !== "" && page === "Manage" && <Button onClick={() => props.setShowBook(true)}>
+                {token !== "" && page === "Manage" && <Button onClick={() => props.setShowBook(true)} className="addButton">
                     <FontAwesomeIcon icon={faPlus} />
                     Add Book
                 </Button>}

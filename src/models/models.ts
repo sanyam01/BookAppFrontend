@@ -4,7 +4,7 @@ export interface Book {
     id: string;
     name: string;
     author: string;
-    image: string;
+    image: File | null;
     description: string;
     price: string;
     categoryID: string;
@@ -35,12 +35,12 @@ export interface Categories {
     categories: Category[]
 }
 
-export const initBook = () => {
+export const initBook = (): Book => {
     return ({
         id: uuidv4(),
         name: "",
         author: "",
-        image: "",
+        image: null,
         description: "",
         price: "",
         categoryID: "",
@@ -75,4 +75,9 @@ export interface Cart {
 export interface Order {
     userID: string;
     books: Array<{ bookID: string, quantity: number, price: string }>;
+}
+
+export interface Image {
+    id: string;
+    image: string;
 }

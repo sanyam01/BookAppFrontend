@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../store/store';
 import { bookSliceActions } from '../../store/bookSlice';
-
+import './BookNew.scss';
 
 interface IProps {
     book: Book;
@@ -16,6 +16,7 @@ interface IProps {
     onAdd?: Function;
     showDelete: boolean;
     onEdit?: Function;
+    image: string;
 }
 
 const BookUI = (props: IProps) => {
@@ -24,7 +25,12 @@ const BookUI = (props: IProps) => {
 
     const token = useSelector((state: any) => state.token);
     const data = useSelector((state: any) => state.books);
-    const userID = useSelector((state: any) => state.userID);
+
+    // const divStyle = {
+    //     backgroundImage: `url(${props.image})`,
+    //     backgroundSize: 'cover',
+    //     backgroundPosition: 'center',
+    // };
 
     const onDelete = (book: Book) => {
         axios.post('http://localhost:4000/deleteBook', book, {
@@ -41,8 +47,10 @@ const BookUI = (props: IProps) => {
 
     return (
 
-        <div className="books">
-            <div className="booksTopBar">
+        <div className="booksNew" >
+            {/* <div style={divStyle} className="displayImage" /> */}
+            {props.image && <img src={`data:image/jpeg;base64,${props.image}`} alt={`Image ${props.image}`} />}
+            <div className="booksTopBar" >
                 {props.showDelete && <div className="deleteButton" onClick={() => props.onEdit && props.onEdit()}>
                     <FontAwesomeIcon icon={faEdit} />
                 </div>}

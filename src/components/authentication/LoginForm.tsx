@@ -45,7 +45,7 @@ const LoginForm = (props: IProps) => {
         });
     }
     return (
-        <div className="loginForm">
+        <div className="loginForm customForm">
             <Form>
                 <FormGroup>
                     <FormLabel>
@@ -76,8 +76,8 @@ const LoginForm = (props: IProps) => {
                 </FormGroup>
             </Form>
             <div className="loginFormButtons">
-                <Button onClick={() => onSubmit()} disabled={user.username === "" || user.password === ""}>Login</Button>
-                <Button onClick={() => navigate(-1)}>Cancel</Button>
+                <Button onClick={() => onSubmit()} disabled={user.username === "" || user.password === ""} className="saveButton">Login</Button>
+                <Button onClick={() => navigate(-1)} className="addButton">Cancel</Button>
 
             </div>
 

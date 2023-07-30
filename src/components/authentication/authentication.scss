@@ -5,28 +5,52 @@
     justify-content: center;
     color: blue;
 
-    &:hover{
+    &:hover {
         text-decoration: underline;
-        color:blueviolet;
+        color: blueviolet;
         cursor: pointer;
     }
 }
 
-.loginForm{
+.loginForm {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     margin-top: 36px;
     width: 400px;
-    gap:20px;
+    gap: 20px;
 
-    .form-control-login{
+    .form-control-login {
         margin-bottom: 16px;
     }
 
-    .loginFormButtons{
+    .loginFormButtons {
         display: flex;
         flex-direction: row-reverse;
         gap: 16px;
+    }
+}
+
+.reverseRowFlex {
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+.customForm {
+
+    .form-control {
+        height: 36px !important;
+        padding: 8px 16px !important;
+        color: #1f2747 !important;
+        background: #fff !important;
+        border: 1px solid #c6c8ce !important;
+        box-shadow: inset 0px 2px 4px rgb(31 39 71 / 10%) !important;
+        border-radius: 8px !important;
+        transition: none !important;
+    }
+
+    .form-control:hover {
+        border: 1px solid #4b5168 !important;
     }
 }

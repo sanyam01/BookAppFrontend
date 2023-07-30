@@ -1,19 +1,15 @@
-.books {
+.booksNew {
     display: flex;
     flex-direction: column;
-    width: 350px;
-    height: 200px;
-    border: 5px solid #1234;
-    border-radius: 8px;
-    background-color: #E6E8E6;
+    width: 250px;
+    height: 300px;
     text-align: left;
-    background-image: url('../../../public/images/backgroundBook.jpg');
-    background-size: cover;
-    background-position: center;
+    align-items: center;
 
 
-    &:hover {
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    .displayImage {
+        height: 150px;
+        width: 100px;
     }
 
     .deleteButton {
@@ -36,7 +32,6 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        // gap:8px;
         height: 56px;
         align-items: center;
         padding-right: 8px;

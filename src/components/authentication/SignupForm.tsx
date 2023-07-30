@@ -19,7 +19,7 @@ const SignupForm = (props: IProps) => {
     const navigate = useNavigate();
 
     return (
-        <Offcanvas show={props.show} onHide={() => props.closeForm()} placement="end">
+        <Offcanvas show={props.show} onHide={() => props.closeForm()} placement="end" className="customForm">
             <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Signup Form</Offcanvas.Title>
             </Offcanvas.Header>
@@ -67,8 +67,9 @@ const SignupForm = (props: IProps) => {
                         </FormControl.Feedback>
                     </FormGroup>
                 </Form>
-
-                <Button onClick={() => props.onSubmit()} disabled={props.signupData.password !== props.signupData.confirmPassword}>Signup</Button>
+                <div className="reverseRowFlex">
+                    <Button onClick={() => props.onSubmit()} disabled={props.signupData.password !== props.signupData.confirmPassword} className="saveButton">Signup</Button>
+                </div>
 
                 <div className="loginText" onClick={() => navigate('/login')}>
                     Already a member/Login

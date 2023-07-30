@@ -9,11 +9,12 @@ interface IProps {
     book: Book;
     onChangeBook: Function;
     onSubmit: Function;
+    handleImageChange: Function;
 }
 
 const BookForm = (props: IProps) => {
     return (
-        <Offcanvas show={props.show} onHide={() => props.closeBook()} placement="end">
+        <Offcanvas show={props.show} onHide={() => props.closeBook()} placement="end" className="customForm">
             <Offcanvas.Header closeButton>
                 <Offcanvas.Title>Book Form</Offcanvas.Title>
             </Offcanvas.Header>
@@ -79,9 +80,14 @@ const BookForm = (props: IProps) => {
                             name="price"
                         />
                     </FormGroup>
+                    <FormGroup>
+                        <FormLabel>Image</FormLabel>
+                        <Form.Control type="file" onChange={(e)=> props.handleImageChange(e)} />
+                    </FormGroup>
                 </Form>
-
-                <Button onClick={() => props.onSubmit()}>Save</Button>
+                <div className="reverseRowFlex">
+                    <Button onClick={() => props.onSubmit()} className="saveButton">Save</Button>
+                </div>
             </Offcanvas.Body>
         </Offcanvas>
     );

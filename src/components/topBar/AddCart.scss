@@ -109,21 +109,22 @@
         display: flex;
         flex-direction: row;
         border-top: 1px solid #C6c8ce;
-        align-items:end;
+        align-items: end;
         justify-content: end;
 
         .proceedButton {
             display: flex;
             flex-direction: row;
             gap: 16px;
-            background-color: #52B640;
+            background-color: #188317;
             border-radius: 8px;
             height: 36px;
             padding: 16px;
             align-items: center;
+            color: white;
 
             &:hover {
-                background-color: #188317;
+                background-color: #52B640;
                 border-radius: 8px;
                 cursor: pointer;
             }
