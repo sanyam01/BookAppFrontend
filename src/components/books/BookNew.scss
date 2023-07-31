@@ -1,28 +1,68 @@
 .booksNew {
     display: flex;
     flex-direction: column;
-    width: 250px;
-    height: 300px;
+    width: 180px;
     text-align: left;
     align-items: center;
 
 
     .displayImage {
-        height: 150px;
-        width: 100px;
+        height: 200px;
+        width: 100%;
+        border-radius: 3px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
-    .deleteButton {
+    .textContentNew {
+        font-weight: 600;
+        font-size: 16px;
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .textContentName {
+        font-weight: 500;
+        font-size: 16px;
+        width: 100%;
+        padding-top: 5px;
+    }
+
+    .textContentAuthor {
+        font-weight: 500;
+        font-size: 16px;
+        width: 100%;
+        color: black;
+    }
+
+    .disableAddCart {
+        background-color: #52b690 !important;
+        cursor: not-allowed !important;
+    }
+
+    .addToCart {
         display: flex;
         flex-direction: row;
         height: 36px;
-        width: 36px;
+        width: 70px;
         align-items: center;
         justify-content: center;
+        position: absolute;
+        background-color: #52B640;
+        border-radius: 8px;
+        cursor: pointer;
+        color: white;
+        margin-top: 10px;
+        margin-left: 80px;
+        padding: 8px;
+        gap: 8px;
+
 
 
         &:hover {
-            background-color: mintcream;
+            background-color: green;
             border-radius: 8px;
             cursor: pointer;
         }
@@ -32,6 +72,7 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        // gap:8px;
         height: 56px;
         align-items: center;
         padding-right: 8px;
@@ -57,11 +98,106 @@
 .booksDiv {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 50px;
     margin: 0 auto;
     width: 100%;
     padding: 36px;
     flex-wrap: wrap;
+
+
+}
+
+.booksBottomBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    gap: 8px;
+    padding-top: 16px;
+
+    .editButton {
+        display: flex;
+        flex-direction: row;
+        height: 36px;
+        width: 80px;
+        align-items: center;
+        justify-content: center;
+        background-color: #52B640;
+        border-radius: 8px;
+        cursor: pointer;
+        color: white;
+        padding: 8px;
+        gap: 8px;
+
+
+
+        &:hover {
+            background-color: green;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+
+    }
+
+    .deleteButton {
+        display: flex;
+        flex-direction: row;
+        height: 36px;
+        width: 100px;
+        align-items: center;
+        justify-content: center;
+        background-color: red;
+        border-radius: 8px;
+        cursor: pointer;
+        color: white;
+        padding: 8px;
+        gap: 8px;
+
+
+
+        &:hover {
+            background-color: darkred;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+    }
+}
+
+.displayBooksOverall {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.modalBook {
+    display: flex;
+    flex-direction: column;
+    padding: 36px;
+
+    .bookNameAuthor {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 16px;
+
+        .textDiv {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: auto;
+        }
+    }
+
+    .displayImageModal {
+        height: 150px;
+        width: 100px;
+        border-radius: 3px;
+
+
+    }
 
 
 }

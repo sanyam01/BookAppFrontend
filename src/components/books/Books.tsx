@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Book, Image } from '../../models/models';
 import BookUI from './BookUI';
-import { useEffect, useState } from 'react';
 
 interface IProps {
     books: Book[];
@@ -13,7 +12,6 @@ interface IProps {
 
 const Books = (props: IProps) => {
 
-    const [render, setRender] = useState(false);
     const token = useSelector((state: any) => state.token);
     const userID = useSelector((state: any) => state.userID);
     const displayBooks = props.books?.filter((book) => book.userID !== userID);
@@ -27,11 +25,6 @@ const Books = (props: IProps) => {
         return "";
 
     }
-
-    useEffect(() => {
-        console.warn("props.images", props.images);
-        setRender(!render);
-    }, [props.images]);
 
     if (!displayBooks) {
         return null;

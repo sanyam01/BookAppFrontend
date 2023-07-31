@@ -30,6 +30,7 @@ const BookForm = (props: IProps) => {
                             placeholder="Enter name"
                             onChange={(e) => props.onChangeBook(e)}
                             name="name"
+                            maxLength={100}
                         />
                     </FormGroup>
                     <FormGroup>

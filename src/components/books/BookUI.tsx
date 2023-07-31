@@ -1,4 +1,3 @@
-import './Book.scss';
 import { Book } from '../../models/models';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +8,8 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../store/store';
 import { bookSliceActions } from '../../store/bookSlice';
 import './BookNew.scss';
+import { Modal } from 'react-bootstrap';
+import { useState } from 'react';
 
 interface IProps {
     book: Book;
@@ -23,14 +24,10 @@ const BookUI = (props: IProps) => {
 
     const dispatch = useAppDispatch();
 
+    const [show, setShow] = useState(false);
+
     const token = useSelector((state: any) => state.token);
     const data = useSelector((state: any) => state.books);
-
-    // const divStyle = {
-    //     backgroundImage: `url(${props.image})`,
-    //     backgroundSize: 'cover',
-    //     backgroundPosition: 'center',
-    // };
 
     const onDelete = (book: Book) => {
         axios.post('http://localhost:4000/deleteBook', book, {
@@ -46,33 +43,54 @@ const BookUI = (props: IProps) => {
     }
 
     return (
-
-        <div className="booksNew" >
-            {/* <div style={divStyle} className="displayImage" /> */}
-            {props.image && <img src={`data:image/jpeg;base64,${props.image}`} alt={`Image ${props.image}`} />}
-            <div className="booksTopBar" >
-                {props.showDelete && <div className="deleteButton" onClick={() => props.onEdit && props.onEdit()}>
-                    <FontAwesomeIcon icon={faEdit} />
-                </div>}
-                {props.showDelete && <div className="deleteButton" onClick={() => onDelete(props.book)}>
-                    <FontAwesomeIcon icon={faTrashCan} />
-                </div>}
-
-                {props.onAdd &&
-                    <CommonTooltip title="Add to Cart">
-                        <div className="deleteButton" onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }}>
-                            <FontAwesomeIcon icon={faPlus} onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }} />
+        <>
+            <Modal onHide={() => setShow(false)} show={show} >
+                <div className='modalBook'>
+                    <div className="bookNameAuthor">
+                        <div className="textDiv">
+                            <strong>{props.book.name}</strong>
+                            <div>by {props.book.author}</div>
                         </div>
-                    </CommonTooltip>}
-            </div>
-            <div className="textDiv">
-                <div className='textContent'>{`Name : ${props.book.name}`}</div>
-                <div className='textContent'>{`Description : ${props.book.description}`}</div>
-                <div className='textContent'>{`Price : $${props.book.price}`}</div>
-            </div>
+                        <img src={`data:image/jpeg;base64,${props.image}`} alt={`Image ${props.image}`} className='displayImageModal' />
+                    </div>
+                    <p>
+                        {props.book.description}
+                    </p>
+
+                </div>
+            </Modal>
+
+            <div className="displayBooksOverall">
+                <div className="booksNew" >
+
+                    {props.image && <img src={`data:image/jpeg;base64,${props.image}`} alt={`Image ${props.image}`} className='displayImage' onClick={() => setShow(true)} />}
+                    <div className='textContentNew'>{`$${props.book.price}`}</div>
+                    <div className='textContentName'>{`${props.book.name}`}</div>
+                    <div className='textContentAuthor'>{`by ${props.book.author}`}</div>
+                    {props.onAdd &&
+                        <CommonTooltip title={token !== "" ? "Add to Cart" : "Login to add to cart"}>
+                            <div className={`addToCart ${token === "" && 'disableAddCart'}`} onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }}>
+                                <FontAwesomeIcon icon={faPlus} onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }} />
+                                <div>Add</div>
+                            </div>
+                        </CommonTooltip>}
+                </div>
+                <div className="booksBottomBar" >
+                    {props.showDelete && <div className="editButton" onClick={() => props.onEdit && props.onEdit()}>
+                        <FontAwesomeIcon icon={faEdit} />
+                        <div>Edit</div>
+                    </div>}
+                    {props.showDelete && <div className="deleteButton" onClick={() => onDelete(props.book)}>
+                        <FontAwesomeIcon icon={faTrashCan} />
+                        Delete
+                    </div>}
 
 
-        </div>
+                </div>
+
+            </div>
+        </>
+
 
 
     );
