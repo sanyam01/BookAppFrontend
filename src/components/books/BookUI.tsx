@@ -44,7 +44,7 @@ const BookUI = (props: IProps) => {
 
     return (
         <>
-            <Modal onHide={() => setShow(false)} show={show} >
+            <Modal onHide={() => setShow(false)} show={show} className="slideIn">
                 <div className='modalBook'>
                     <div className="bookNameAuthor">
                         <div className="textDiv">
@@ -64,9 +64,6 @@ const BookUI = (props: IProps) => {
                 <div className="booksNew" >
 
                     {props.image && <img src={`data:image/jpeg;base64,${props.image}`} alt={`Image ${props.image}`} className='displayImage' onClick={() => setShow(true)} />}
-                    <div className='textContentNew'>{`$${props.book.price}`}</div>
-                    <div className='textContentName'>{`${props.book.name}`}</div>
-                    <div className='textContentAuthor'>{`by ${props.book.author}`}</div>
                     {props.onAdd &&
                         <CommonTooltip title={token !== "" ? "Add to Cart" : "Login to add to cart"}>
                             <div className={`addToCart ${token === "" && 'disableAddCart'}`} onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }}>
@@ -74,6 +71,9 @@ const BookUI = (props: IProps) => {
                                 <div>Add</div>
                             </div>
                         </CommonTooltip>}
+                    <div className='textContentNew'>{`$${props.book.price}`}</div>
+                    <div className='textContentName'>{`${props.book.name}`}</div>
+                    <div className='textContentAuthor'>{`by ${props.book.author}`}</div>
                 </div>
                 <div className="booksBottomBar" >
                     {props.showDelete && <div className="editButton" onClick={() => props.onEdit && props.onEdit()}>

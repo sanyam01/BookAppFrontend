@@ -6,7 +6,7 @@ import { Book, Image } from '../../models/models';
 interface IProps {
     onEdit: Function;
     images: Array<Image>
-
+    categories: string[]
 }
 
 const ManageBooks = (props: IProps) => {
@@ -26,14 +26,32 @@ const ManageBooks = (props: IProps) => {
     }
 
     return (
-        <div className="manageBooks">
+        <div className="manageBooks" style={{ height: 'calc(100vh - 56px)', overflowY:'auto' }}>
             <div className="manageBooksTitle">
                 Manage Books
             </div>
-            <div className='booksDiv'>
-                {displayBooks.map((book: any) => <BookUI book={book} token={token} key={book.id} showDelete={true} onEdit={() => props.onEdit(book)} image={getImage(book)} />)}
+            <div className="allBooksManage">
+                {/* {props.categories.map((category) => {
+                    if (displayBooks.filter((book: Book) => book.categoryID === category).length > 0) {
+                        return <div className="categoryBook" key={category}>
+                            <div className="categoryTitle">
+                                {category}
+                            </div>
+                            {displayBooks.filter((book: Book) => book.categoryID === category)?.map((book: Book) => <BookUI book={book} token={token} key={book.id} showDelete={true} onEdit={() => props.onEdit(book)} image={getImage(book)} />)}
+                        </div>
+                    }
+
+                }
+                )} */}
+
+                {displayBooks.map((book: Book) => <BookUI book={book} token={token} key={book.id} showDelete={true} onEdit={() => props.onEdit(book)} image={getImage(book)} />)}
             </div>
-        </div>
+
+
+
+
+
+        </div >
     );
 
 }

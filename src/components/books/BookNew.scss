@@ -1,10 +1,10 @@
 .booksNew {
     display: flex;
     flex-direction: column;
-    width: 180px;
+    // width: 180px;
     text-align: left;
     align-items: center;
-
+    position: relative;
 
     .displayImage {
         height: 200px;
@@ -95,18 +95,6 @@
 }
 
 
-.booksDiv {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 36px;
-    flex-wrap: wrap;
-
-
-}
-
 .booksBottomBar {
     display: flex;
     flex-direction: row;
@@ -169,6 +157,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 180px;
+    min-width: 180px;
 }
 
 
@@ -187,7 +177,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            margin: auto;
+            margin-top: 20px;
         }
     }
 
@@ -198,6 +188,78 @@
 
 
     }
+
+
+}
+
+
+.slideIn .modal-dialog {
+    transition: transform 1s ease-out !important;
+}
+
+.slideIn .modal-content {
+    border-radius: 8px !important;
+}
+
+
+
+.allBooks {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    // height: calc(100vh - 56px);
+    overflow-y: auto;
+    padding: 16px 32px;
+
+    .categoryBookDiv {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        .categoryBook {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .categoryTitle {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            font-weight: 500;
+            font-size: 18px;
+        }
+    }
+
+
+    .booksDiv {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 36px;
+        flex-wrap: wrap;
+    }
+}
+
+.allBooksManage {
+
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 36px;
+    flex-wrap: wrap;
+
 
 
 }

@@ -25,6 +25,7 @@ function App(props: IProps) {
   const dispatch = useAppDispatch();
 
   const data = useSelector((state: any) => state.books);
+  const categories: string[] = Array.from(new Set(data?.map((book: Book) => book.categoryID)));
 
   const [showBook, setShowBook] = useState(false);
   const [book, setBook] = useState(initBook());
@@ -194,7 +195,6 @@ function App(props: IProps) {
 
     axios.get('http://localhost:4000/books').then(response => {
       dispatch(bookSliceActions.setBooks(response.data));
-      dispatch(bookSliceActions.setBooks(response.data));
     }).catch(err => console.warn("error", err));
 
 
@@ -211,8 +211,8 @@ function App(props: IProps) {
         dispatch(bookSliceActions.setFormState("Add"));
       }
       } setSignUp={() => setSignup(true)} />
-      {page === "Books" && <Books books={data} onAdd={onAdd} onEdit={onEdit} images={images} />}
-      {page === "Manage" && <ManageBooks onEdit={onEdit} images={images} />}
+      {page === "Books" && <Books books={data} onAdd={onAdd} onEdit={onEdit} images={images} categories={categories} />}
+      {page === "Manage" && <ManageBooks onEdit={onEdit} images={images} categories={categories} />}
       {page === "Orders" && <Orders />}
     </div>
   );

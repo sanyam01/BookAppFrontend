@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
 import { Book, Image } from '../../models/models';
 import BookUI from './BookUI';
+import { useRef } from 'react';
 
 interface IProps {
     books: Book[];
     onAdd: Function;
     onEdit: Function;
-    images: Array<Image>
+    images: Array<Image>;
+    categories: string[]
 
 }
 
@@ -30,9 +32,25 @@ const Books = (props: IProps) => {
         return null;
     }
 
+
     return (
-        <div className='booksDiv'>
-            {displayBooks?.map((book) => <BookUI book={book} token={token} key={book.id} onAdd={() => props.onAdd(book)} showDelete={false} onEdit={() => props.onEdit(book)} image={getImage(book)} />)}
+
+        <div className="allBooks" style={{ height: 'calc(100vh - 56px)', overflowY: 'auto' }}>
+            {props.categories.map((category) => {
+                if (displayBooks.filter((book) => book.categoryID === category).length > 0) {
+                    return <div className="categoryBookDiv" key={category}>
+                        <div className="categoryTitle">
+                            {category}
+                        </div>
+                        <div className="categoryBook">
+                            {displayBooks.filter((book) => book.categoryID === category)?.map((book) => <BookUI book={book} token={token} key={book.id} onAdd={() => props.onAdd(book)} showDelete={false} onEdit={() => props.onEdit(book)} image={getImage(book)} />)}
+                        </div>
+                    </div>
+                }
+
+            }
+            )}
+
         </div>
 
     );
