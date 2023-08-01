@@ -207,7 +207,6 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
-    // height: calc(100vh - 56px);
     overflow-y: auto;
     padding: 16px 32px;
 
@@ -215,6 +214,7 @@
         display: flex;
         flex-direction: column;
         gap: 32px;
+        position: relative;
 
         .categoryBook {
             display: flex;
@@ -223,6 +223,8 @@
             margin: 0 auto;
             width: 100%;
             overflow-x: auto;
+            position: relative;
+            align-items: center;
 
             &::-webkit-scrollbar {
                 display: none;
@@ -262,4 +264,41 @@
 
 
 
+}
+
+
+.arrow {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    height: 50px;
+    width: 50px;
+    background-color: whitesmoke;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrowsIcon {
+    height: 40px;
+    width: 40px;
+}
+
+.arrow.visible {
+    opacity: 1;
+}
+
+.arrow-left {
+    left: 32px;
+}
+
+.arrow-right {
+    right: 32px;
 }
