@@ -7,6 +7,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../store/store';
 import { bookSliceActions } from '../../store/bookSlice';
+import { useSelector } from "react-redux";
 
 interface IProps {
 
@@ -17,6 +18,8 @@ const LoginForm = (props: IProps) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
+    const server = useSelector((state: any) => state.server);
+
     const [user, setUser] = useState(initSignup());
 
     const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -25,7 +28,7 @@ const LoginForm = (props: IProps) => {
 
     const onSubmit = () => {
         const logUser = { username: user.username, password: user.password };
-        axios.post('http://localhost:4000/login', logUser).then((res) => {
+        axios.post(`${server}/login`, logUser).then((res) => {
             dispatch(bookSliceActions.setToken(res.data.token));
             localStorage.setItem(
                 'userData',

@@ -23,6 +23,8 @@ const AddCart = (props: IProps) => {
 
     const dispatch = useAppDispatch();
 
+    const server = useSelector((state: any) => state.server);
+
     const cart: Cart = useSelector((state: any) => state.cart);
     const token = useSelector((state: any) => state.token);
     let totalBooks = 0;
@@ -60,7 +62,7 @@ const AddCart = (props: IProps) => {
 
         const newCart = { ...cart, date: new Date().toISOString() }
 
-        axios.post('http://localhost:4000/addOrder', newCart, {
+        axios.post(`${server}/addOrder`, newCart, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

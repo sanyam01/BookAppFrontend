@@ -45,6 +45,7 @@ function App(props: IProps) {
   const cart: Cart | null = useSelector((state: any) => state.cart);
 
   const formState = useSelector((state: any) => state.formState);
+  const server = useSelector((state: any) => state.server);
 
   // this is for storing the image
   const [images, setImages] = useState<Image[]>([]);
@@ -110,7 +111,7 @@ function App(props: IProps) {
 
   const onSubmitSignup = () => {
     const newuser = { username: signupData.username, password: signupData.password, userID: signupData.userID };
-    axios.post('http://localhost:4000/signup', newuser).then((res) => {
+    axios.post(`${server}/signup`, newuser).then((res) => {
 
       navigate('/login');
     }).catch(() => {
@@ -129,7 +130,7 @@ function App(props: IProps) {
     }
 
     if (formState === "Add") {
-      axios.post('http://localhost:4000/addImage', formData, {
+      axios.post(`{${server}}/addImage`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -144,12 +145,12 @@ function App(props: IProps) {
         });
     }
     else {
-      axios.post('http://localhost:4000/editImage', formData, {
+      axios.post(`${server}/editImage`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }).then(response => {
-        const newImages = images?.map((image) => { return image.id === getBook.id ? response.data.image  : image })
+        const newImages = images?.map((image) => { return image.id === getBook.id ? response.data.image : image })
         setImages(newImages);
         setImage(null);
       }).catch(error => {
@@ -163,7 +164,7 @@ function App(props: IProps) {
     const newBook = { ...book, userID: userID };
 
     if (formState === "Add") {
-      axios.post('http://localhost:4000/addBook', newBook, {
+      axios.post(`${server}/addBook`, newBook, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -179,7 +180,7 @@ function App(props: IProps) {
         });
     }
     else {
-      axios.post('http://localhost:4000/editBook', newBook, {
+      axios.post(`${server}/editBook`, newBook, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -194,11 +195,11 @@ function App(props: IProps) {
 
   useEffect(() => {
 
-    axios.get('http://localhost:4000/images').then(response => {
+    axios.get(`${server}/images`).then(response => {
       setImages(response.data);
     }).catch(err => console.warn("error", err));
 
-    axios.get('http://localhost:4000/books').then(response => {
+    axios.get(`${server}/books`).then(response => {
       dispatch(bookSliceActions.setBooks(response.data));
     }).catch(err => console.warn("error", err));
 

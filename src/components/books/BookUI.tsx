@@ -26,11 +26,13 @@ const BookUI = (props: IProps) => {
 
     const [show, setShow] = useState(false);
 
+    const server = useSelector((state: any) => state.server);
+
     const token = useSelector((state: any) => state.token);
     const data = useSelector((state: any) => state.books);
 
     const onDelete = (book: Book) => {
-        axios.post('http://localhost:4000/deleteBook', book, {
+        axios.post(`${server}/deleteBook`, book, {
             headers: {
                 Authorization: `Bearer ${token}`
             }

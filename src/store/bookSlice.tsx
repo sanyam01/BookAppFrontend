@@ -9,7 +9,8 @@ const initialState: {
     userID: string,
     books: Book[] | null,
     formState: "Add" | "Edit",
-    orders: Cart[] | null
+    orders: Cart[] | null,
+    server: string,
 
 } = {
     name: "",
@@ -19,7 +20,9 @@ const initialState: {
     userID: "",
     books: null,
     formState: "Add",
-    orders: null
+    orders: null,
+    server: 'http://quilltome.us-east-2.elasticbeanstalk.com/'
+    // server: 'http://localhost:4000'
 }
 
 export const bookSliceReducer = createSlice({

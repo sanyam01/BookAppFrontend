@@ -19,6 +19,7 @@ const TopbarOffcanvasBody = (props: IProps) => {
     const name = useSelector((state: any) => state.name);
     const token = useSelector((state: any) => state.token);
     const userID = useSelector((state: any) => state.userID);
+    const server = useSelector((state: any) => state.server);
 
     const logout = () => {
         localStorage.removeItem("userData");
@@ -53,7 +54,7 @@ const TopbarOffcanvasBody = (props: IProps) => {
                 }} />
 
                 <ListItemCanvas text="My Orders" icon={faBagShopping} onClick={() => {
-                    axios.get('http://localhost:4000/orders', {
+                    axios.get(`${server}/orders`, {
                         params: { userID },
                         headers: {
                             Authorization: `Bearer ${token}`
