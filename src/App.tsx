@@ -14,10 +14,13 @@ import { bookSliceActions } from './store/bookSlice';
 import { useSelector } from 'react-redux';
 import ManageBooks from './components/manageBooks/ManageBooks';
 import Orders from './components/orders/Orders';
+import { read } from 'fs';
 
 interface IProps {
 
 }
+
+
 
 function App(props: IProps) {
 
@@ -46,6 +49,8 @@ function App(props: IProps) {
   // this is for storing the image
   const [images, setImages] = useState<Image[]>([]);
   const [image, setImage] = useState<File | null>(null);
+
+  const [stringImage, setStringImage] = useState("");
 
   const closeBook = () => {
     setShowBook(false);
@@ -100,6 +105,7 @@ function App(props: IProps) {
 
     const file = e.currentTarget.files[0];
     setImage(file);
+
   };
 
   const onSubmitSignup = () => {
@@ -116,20 +122,20 @@ function App(props: IProps) {
 
   const submitImage = () => {
     const getBook = book;
-    if (formState === "Add") {
-      const formData = new FormData();
-      formData.append('id', book.id);
-      if (image) {
-        formData.append('file', image);
-      }
+    const formData = new FormData();
+    formData.append('id', book.id);
+    if (image) {
+      formData.append('file', image);
+    }
 
+    if (formState === "Add") {
       axios.post('http://localhost:4000/addImage', formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }).then(response => {
-        const newImages = [...images, { id: book.id, image: image }];
-        // setImages(newImages);
+        const newImages = [...images, response.data.image];
+        setImages(newImages);
         setImage(null);
       })
         .catch(error => {
@@ -138,17 +144,16 @@ function App(props: IProps) {
         });
     }
     else {
-      axios.post('http://localhost:4000/editImage', { id: book.id, image: image }, {
+      axios.post('http://localhost:4000/editImage', formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       }).then(response => {
-
-        const newImages = images?.map((image) => { return image.id === getBook.id ? { id: book.id, image: image.image } : image })
+        const newImages = images?.map((image) => { return image.id === getBook.id ? response.data.image  : image })
         setImages(newImages);
         setImage(null);
       }).catch(error => {
-        console.warn("error");
+        // console.warn("error");
       })
     }
   }

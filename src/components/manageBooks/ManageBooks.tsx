@@ -14,7 +14,7 @@ const ManageBooks = (props: IProps) => {
     const token = useSelector((state: any) => state.token);
     const userID = useSelector((state: any) => state.userID);
     const books = useSelector((state: any) => state.books);
-    const displayBooks = books.filter((book: any) => book.userID === userID);
+    const displayBooks = books?.filter((book: any) => book.userID === userID);
 
     const getImage = (book: Book) => {
         let selectedImage = props.images.filter((image) => image.id === book.id);
@@ -31,26 +31,8 @@ const ManageBooks = (props: IProps) => {
                 Manage Books
             </div>
             <div className="allBooksManage">
-                {/* {props.categories.map((category) => {
-                    if (displayBooks.filter((book: Book) => book.categoryID === category).length > 0) {
-                        return <div className="categoryBook" key={category}>
-                            <div className="categoryTitle">
-                                {category}
-                            </div>
-                            {displayBooks.filter((book: Book) => book.categoryID === category)?.map((book: Book) => <BookUI book={book} token={token} key={book.id} showDelete={true} onEdit={() => props.onEdit(book)} image={getImage(book)} />)}
-                        </div>
-                    }
-
-                }
-                )} */}
-
                 {displayBooks.map((book: Book) => <BookUI book={book} token={token} key={book.id} showDelete={true} onEdit={() => props.onEdit(book)} image={getImage(book)} />)}
             </div>
-
-
-
-
-
         </div >
     );
 
