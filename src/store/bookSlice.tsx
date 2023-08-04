@@ -21,7 +21,7 @@ const initialState: {
     books: null,
     formState: "Add",
     orders: null,
-    server: 'http://quilltome.us-east-2.elasticbeanstalk.com/'
+    server: 'http://quilltome.us-east-2.elasticbeanstalk.com'
     // server: 'http://localhost:4000'
 }
 
