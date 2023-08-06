@@ -109,8 +109,8 @@
         display: flex;
         flex-direction: row;
         border-top: 1px solid #C6c8ce;
-        align-items: end;
-        justify-content: end;
+        align-items: flex-end;
+        justify-content: flex-end;
 
         .proceedButton {
             display: flex;

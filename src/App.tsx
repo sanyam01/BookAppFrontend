@@ -200,7 +200,7 @@ function App(props: IProps) {
       dispatch(bookSliceActions.setBooks(response.data));
     }).catch(err => console.warn("error", err));
 
-
+// eslint-disable-next-line
   }, []);
 
 
