@@ -1,9 +1,6 @@
 import { useSelector } from 'react-redux';
 import CartItem from '../topBar/CartItem';
-
 import './Orders.scss';
-import { useEffect } from 'react';
-import axios from 'axios';
 interface IProps {
 
 }

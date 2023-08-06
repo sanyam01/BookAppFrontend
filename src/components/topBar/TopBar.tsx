@@ -1,7 +1,7 @@
 import './TopBar.scss';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faPlus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import TopbarCanvas from './topbarOffcanvas/TopbarCanvas';
 import { useSelector } from 'react-redux';
 import AddCart from './AddCart';

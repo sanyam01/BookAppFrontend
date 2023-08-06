@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 import Books from './components/books/Books';
@@ -6,7 +6,7 @@ import { Book } from './models/models';
 import './App.css';
 import TopBar from './components/topBar/TopBar';
 import BookForm from './components/topBar/BookForm';
-import { initBook, initSignup, PageType, Cart, Image } from './models/models';
+import { initBook, initSignup, Cart, Image } from './models/models';
 import SignupForm from './components/authentication/SignupForm';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from './store/store'
@@ -14,7 +14,6 @@ import { bookSliceActions } from './store/bookSlice';
 import { useSelector } from 'react-redux';
 import ManageBooks from './components/manageBooks/ManageBooks';
 import Orders from './components/orders/Orders';
-import { read } from 'fs';
 
 interface IProps {
 
