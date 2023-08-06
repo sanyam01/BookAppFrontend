@@ -50,8 +50,6 @@ function App(props: IProps) {
   const [images, setImages] = useState<Image[]>([]);
   const [image, setImage] = useState<File | null>(null);
 
-  const [stringImage, setStringImage] = useState("");
-
   const closeBook = () => {
     setShowBook(false);
     setImage(null);
