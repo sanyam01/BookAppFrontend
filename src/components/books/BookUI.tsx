@@ -53,7 +53,7 @@ const BookUI = (props: IProps) => {
                             <strong>{props.book.name}</strong>
                             <div>by {props.book.author}</div>
                         </div>
-                        <img src={`data:image/jpeg;base64,${props.image}`} alt={`Image ${props.image}`} className='displayImageModal' />
+                        <img src={`data:image/jpeg;base64,${props.image}`} alt={`not found`} className='displayImageModal' />
                     </div>
                     <p>
                         {props.book.description}
@@ -65,7 +65,7 @@ const BookUI = (props: IProps) => {
             <div className="displayBooksOverall">
                 <div className="booksNew" >
 
-                    {props.image && <img src={`data:image/jpeg;base64,${props.image}`} alt={`Image ${props.image}`} className='displayImage' onClick={() => setShow(true)} />}
+                    {props.image && <img src={`data:image/jpeg;base64,${props.image}`} alt={`not found`} className='displayImage' onClick={() => setShow(true)} />}
                     {props.onAdd &&
                         <CommonTooltip title={token !== "" ? "Add to Cart" : "Login to add to cart"}>
                             <div className={`addToCart ${token === "" && 'disableAddCart'}`} onClick={() => props.onAdd ? props.onAdd(props.book) : () => { }}>
