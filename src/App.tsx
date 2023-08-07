@@ -127,7 +127,7 @@ function App(props: IProps) {
     }
 
     if (formState === "Add") {
-      axios.post(`{${server}}/addImage`, formData, {
+      axios.post(`${server}/addImage`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
